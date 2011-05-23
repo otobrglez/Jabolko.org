@@ -1,0 +1,15 @@
+<% heading "Urejevalnik članka" %>
+
+<div id="blog">
+	<div id="blogt"></div>
+	<div class="article">
+		<%= render :partial => 'form', :locals => { :submit_button => "Potrdi spremembe" } %>
+	</div>
+	<div id="blogb"></div>
+</div>
+
+<% content_for :actions do -%>
+	<%= link_to "Izbriši", @article, :confirm => "Si prepričan?", :method => :delete %>
+	<%= link_to "Prekliči", articles_path %>
+	<%= link_to "Na dno", '#footerlinks' %>
+<% end -%>

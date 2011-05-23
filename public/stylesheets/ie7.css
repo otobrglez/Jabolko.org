@@ -1,0 +1,24 @@
+.pagination a, .pagination .current {
+	background:url(../images/pagnav_l.gif) no-repeat 0 0;
+	line-height:26px;
+	padding:0;
+	margin:0 3px;
+	color:#3fa9f5;
+	position:relative;
+}
+
+.pagination a span, .pagination .current span {
+	background:url(../images/pagnav_r.gif) no-repeat right 0;
+	padding:6px 8px;
+}
+
+.pagination a:hover span, .pagination .current span {
+	background:url(../images/pagnav_rh.gif) no-repeat right 0;
+	padding:6px 8px;
+}
+
+.pagination .current, .pagination a:hover {
+	border:0;
+	background:url(../images/pagnav_lh.gif) no-repeat 0 0;
+	color:#fff;
+}

@@ -1,0 +1,7 @@
+<% heading "Seznam uporabnikov" %>
+
+<%= render :partial => @users %>
+
+<% content_for :actions do -%>
+	<%= link_to "Registriraj uporabnika", new_user_path %>
+<% end -%>

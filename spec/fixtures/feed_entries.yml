@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: feed_entries
+#
+#  id               :integer         not null, primary key
+#  title            :string(255)
+#  url              :string(255)
+#  feed_category_id :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  link: MyString
+  feed_category_id: 1
+
+two:
+  title: MyString
+  link: MyString
+  feed_category_id: 1

@@ -1,0 +1,16 @@
+--- 
+javascripts: 
+- base: 
+  - jquery.min
+  - jquery.cookies.2.2.0.min
+  - shCore
+  - shBrushBash
+  - shBrushPlain
+  - shBrushAppleScript
+  - application
+stylesheets: 
+- base:
+  - reset 
+  - application
+  - shCore
+  - shThemeDefault

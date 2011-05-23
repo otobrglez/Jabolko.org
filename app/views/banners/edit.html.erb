@@ -1,0 +1,25 @@
+<% heading "Editing banner" %>
+<% title "Editing banner" %>
+
+<% form_for(@banner) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </p>
+  <p>
+    <%= f.label :published %><br />
+    <%= f.check_box :published %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @banner %> |
+<%= link_to 'Back', banners_path %>

@@ -1,0 +1,14 @@
+<% heading "Izberi clanek za urejanje" %>
+<% title "Apple uporabniki Slovenije" %>
+
+<% for article in @articles %>
+	<div class="article">
+		<%= image_tag(article.mainimage, :class => 'mainimage') %>
+		<h2><%= link_to "#{article.state} #{article.title}", edit_article_path(article) %></h2>
+	</div>
+	<br /><br />
+<% end %>
+
+<% content_for :actions do -%>
+	<%= link_to "Dodaj članek", new_article_path %>
+<% end -%>

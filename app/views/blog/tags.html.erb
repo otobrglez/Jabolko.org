@@ -1,0 +1,9 @@
+<% title "Seznam značk" %>
+<h2 class="heading2">
+	Seznam značk
+</h2>
+<ul id="tags_link">
+	<% for tag in @tags %>
+		<li><%= link_to(tag.name, blog_tag_path(tag)) %></li>
+	<% end %>
+</ul>

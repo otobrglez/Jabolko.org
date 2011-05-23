@@ -1,0 +1,37 @@
+<div class="article">
+	<% if is_view == "index" -%>
+		<%= link_to image_tag(article.mainimage, :class => 'mainimage'), blog_article_path(article), :class => "mainimage" %>
+		<h2><%= link_to "#{article.state} #{article.title}", blog_article_path(article) %></h2>
+	<% elsif is_view == "show" -%>
+		<%= image_tag(article.mainimage, :class => 'mainimage') %>
+		<h2><%= "#{article.state} #{article.title}" %></h2>
+	<% end -%>
+	<div class="meta clear">
+		<div class="numofcom">
+			<%= link_to "0", "#{blog_article_path(article)}#disqus_thread" %>
+		</div>
+		<span class="created_at">
+			<%= list_writers(article.writers) %>, 
+			<%=l article.created_at.to_date %> v 
+			<%= link_to_article_category(article) %>
+			z značkami <%= list_tags(article.tags) %>
+		</span>
+	</div>
+	<div class="content">
+		<% if is_view == 'index' -%>
+			<%= blogofy(article.intro) %>
+		<% elsif is_view == 'show' -%>
+			<%= blogofy(article.body) %>
+			<% if article.source %>
+				<p>
+					Vir: <%= link_to article.source.name, article.source.url, :target => "_blank" %>
+				</p>
+			<% end -%>
+		<% end -%>
+	</div>
+	<% if is_view == 'index' -%>
+		<div class="readmore">
+			<%= link_to "Preberi cel članek", blog_article_path(article) %>
+		</div>
+	<% end -%>
+</div>

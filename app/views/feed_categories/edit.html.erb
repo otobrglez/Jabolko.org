@@ -1,0 +1,8 @@
+<% heading "Edit Feed Category" %>
+
+<%= render :partial => 'form' %>
+
+<% content_for :actions do -%>
+	<%= link_to "Show", @feed_category %>
+  <%= link_to "View All", feed_categories_path %>
+<% end -%>

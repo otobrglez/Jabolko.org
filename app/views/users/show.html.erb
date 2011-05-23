@@ -1,0 +1,10 @@
+<% heading @user.fullname %>
+
+Podatki o uporabniku:<br /><br />
+<%= render :partial => @user %><br />
+
+<% content_for :actions do -%>
+	<%= link_to "Uredi", edit_user_path(@user) %>
+  <%= link_to "Izbriši", @user, :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to "Na seznam uporabnikov", users_path %>
+<% end -%>

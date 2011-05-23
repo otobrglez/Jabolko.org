@@ -1,0 +1,9 @@
+<% heading @category.title %>
+<% title @category.title %>
+
+<%= render :partial => @category_articles, :spacer_template => 'articles/article_spacer', :locals => { :is_view => 'index' } %>
+<%= articles_pagination(@category_articles) || '<div id="blank_space"></div>' %>
+
+<% content_for :actions do -%>
+	<%= link_to "Uredi", edit_category_path(@category) %>
+<% end -%>

@@ -1,0 +1,9 @@
+<% heading "Seznam staticnih strani" %>
+
+<% for page in @pages %>
+	<%= link_to page.title, page %><br />
+<% end %>
+
+<% content_for :actions do -%>
+	<%= link_to "Nova staticna stran", new_page_path %>
+<% end -%>

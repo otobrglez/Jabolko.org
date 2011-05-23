@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>
+			<%= h(page_head_title(yield(:title))) %>
+		</title>
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<meta name="title" content="<%= h(page_head_title(yield(:title))) %>" />
+    <%= yield(:head) || '<link rel="image_src" href="/images/jabolko_facebook.png" /><meta name="description" content="Jabolko.org je neodvisni osrednji vir znanja Apple uporabnikov Slovenije. Blog s svežimi novicami in članki iz jabolčnega sveta." /><meta name="keywords" content="apple, jabolko, slovenija, mac, iphone, ipod, imac, macbook, macbook pro" />' %>
+		<link	type="application/atom+xml" rel="alternate" title="Jabolko.org Sok" href="http://feeds.feedburner.com/jabolkoorg-sok" />
+
+		<%= stylesheet_link_merged :base %>
+    <%#= stylesheet_link_tag 'reset', 'application', 'shCore', 'shThemeDefault' %>
+		<%= stylesheet_link_tag 'admin' %>
+		
+		<% if browser_is? :ie8 %>
+    	<%= stylesheet_link_tag 'ie8' %>
+		<% elsif browser_is? :ie7 %>
+    	<%= stylesheet_link_tag 'ie7' %>
+		<% elsif browser_is? :ie6 %>
+    	<%= stylesheet_link_tag 'ie6' %>
+		<% end %>
+		
+		<% unless request.env['HTTP_USER_AGENT'].downcase.index('macintosh') %>
+			<style type="text/css">
+				#rss a {
+					font:23px Arial;
+				}
+			</style>
+		<% end -%>
+
+
+		<%#= javascript_include_tag 'jquery.min.js', 'shCore', 'shBrushBash', 'application' %>
+		<%= javascript_include_merged :base %>
+		<%= javascript_include_tag 'admin' %>
+  </head>
+  <body>
+		<div id="container">
+			<div id="header">
+				<div id="logo">
+					<%= link_to image_tag('jabolko.png', :alt => "Jabolko.org"), articles_path %>
+				</div>
+				<% if flash[:error] %>
+					<div id="errors">
+				  	<%= flash[:error] %>
+				  </div>
+				<% elsif flash[:notice] %>
+					<div id="notice">
+				  	<%= flash[:notice] %>
+				  </div>
+				<% end %>
+				<ul id="topnav">
+					<li class="selected"><%= link_to "<span>Admin</span>", admin_path %></li>
+					<li><%= link_to "<span>Blog</span>", root_path %></li>
+				</ul>
+				<div id="about">
+					<h1>Apple uporabniki Slovenije</h1>
+					<p>Združenje uporabnikov tehnologij podjetja Apple</p>
+					<%= link_to image_tag('twitter_sidebar.png'), 'http://twitter.com/jabolkoorg', :id => 'twitter_sidebar', :target => "_blank" %>
+					<%= link_to image_tag('facebook_sidebar.png'), 'http://www.facebook.com/group.php?gid=15631334625', :id => 'facebook_sidebar', :target => "_blank"  %>
+					<%= link_to image_tag('koornk_sidebar.png'), 'http://www.koornk.com/user/jabolkoorg', :id => 'koornk_sidebar', :target => "_blank" %>
+				</div>
+			</div>
+      <div id="main">
+				<% if show_title? && has_role?(:admin) -%>
+					<h2 id="pagetitle"><%= yield(:heading) %><span><%= yield(:actions) %></span></h2>
+				<% end -%>
+      	<%= yield(:main) or yield %>
+      </div>
+			<div id="sidebar">
+				<%= render :partial => "layouts/admin_sidebar" %>
+			</div>
+			<div class="clear"></div>
+    </div>
+		<div id="admin_footer">
+			<div id="admin_desc">
+				(c) <%= link_to "jabolko.org", 'http://www.jabolko.org/' %> | programiral tomaz zlender, oblikoval david praznik
+			</div>
+		</div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<div id="banner260x150">
+	<div class="oglasni_prostor">
+		<%= link_to('Oglasni prostor', 'mailto:info@jabolko.org?Subject=Želim oglaševati na Jabolko.org') %>
+		<%-
+			banner = Banner.first(:conditions => { :published => true })
+			if banner
+		%>
+			<%= link_to image_tag(banner.image, :size => "258x148"), banner.url, :target => "_blank", :class => "banner" %>
+		<%- end %>
+		<%= link_to image_tag("banners/najava_razvijalcev.jpg", :size => "258x148"), "http://www.razvijalci.si/", :target => "_blank", :class => "banner" %>
+	</div>
+</div>

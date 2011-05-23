@@ -1,0 +1,25 @@
+<% heading "Listing banners" %>
+<% title "Listing banners" %>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Image</th>
+    <th>Published</th>
+  </tr>
+
+<% @banners.each do |banner| %>
+  <tr>
+    <td><%=h banner.url %></td>
+    <td><%=h banner.image %></td>
+    <td><%=h banner.published %></td>
+    <td><%= link_to 'Show', banner %></td>
+    <td><%= link_to 'Edit', edit_banner_path(banner) %></td>
+    <td><%= link_to 'Destroy', banner, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New banner', new_banner_path %>

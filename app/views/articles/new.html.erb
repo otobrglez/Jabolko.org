@@ -1,0 +1,8 @@
+<% heading "Dodaj članek" %>
+
+<%= render :partial => 'form', :locals => { :submit_button => "Shrani članek" } %>
+
+<% content_for :actions do -%>
+	<%= link_to "Prekliči", articles_path %>
+	<%= link_to "Na dno", '#footerlinks' %>
+<% end -%>

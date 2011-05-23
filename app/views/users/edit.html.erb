@@ -1,0 +1,8 @@
+<% heading "Uredi uporabnika" %>
+
+<%= render :partial => 'form' %>
+
+<% content_for :actions do -%>
+	<%= link_to "Prekliči", @user %>
+  <%= link_to "Na seznam uporabnikov", users_path %>
+<% end -%>

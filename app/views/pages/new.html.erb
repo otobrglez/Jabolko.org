@@ -1,0 +1,7 @@
+<% heading "Nova staticna stran" %>
+
+<%= render :partial => 'form', :locals => { :submit_button => 'Shrani staticno stran' } %>
+
+<% content_for :actions do -%>
+	<%= link_to "Na seznam staticnih strani", pages_path %>
+<% end -%>

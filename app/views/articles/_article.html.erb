@@ -1,0 +1,38 @@
+<div class="article">
+	<%= image_tag(article.mainimage, :class => 'mainimage') %>
+	<h2><%= link_to "#{article.state} #{article.title}", blog_article_path(article) %></h2>
+	<div class="meta clear">
+		<span class="created_at">
+			<%= list_writers(article.writers) %>, 
+			<%=l article.created_at.to_date %> v 
+			<% unless article.categories %>
+				<%= link_to_article_category(article) %>
+			<% end -%>
+			z značkami <%= list_tags(article.tags) %>
+		</span>
+	</div>
+	<div class="content">
+		<% if is_view == 'index' -%>
+			<%= blogofy(article.intro) %>
+		<% elsif is_view == 'show' -%>
+			<%= blogofy(article.body) %>
+			<% if article.source %>
+				<p>
+					Vir: <%= link_to article.source.name, article.source.url, :target => "_blank" %>
+				</p>
+			<% end -%>
+		<% end -%>
+	</div>
+	<% if is_view == 'index' -%>
+		<div class="readmore">
+			<%= link_to "Preberi cel članek", article %>
+		</div>
+	<% end -%>
+
+	<% if is_view == 'show' -%>
+		<% content_for :head do -%>
+			<meta name="description" content="<%= article.intro %>" />
+			<link rel="image_src" href="<%= article.image %>" / >
+		<% end -%>
+	<% end -%>
+</div>

@@ -1,0 +1,18 @@
+<div class="writer_summary">
+	<div class="writer_image">
+		<% if writer.email.present? %>
+			<%= link_to (gravatar_for writer, :size => 48, :alt => writer.fullname), blog_writer_path(writer) %>
+		<% elsif writer.avatar.present? -%>
+			<%= link_to image_tag(writer.avatar, :size => '48x48', :alt => writer.fullname), blog_writer_path(writer) %>
+		<% else -%>
+			<%= link_to image_tag('https://jabolko.s3.amazonaws.com/website/images/design/person.png'), blog_writer_path(writer) %>
+		<% end -%>
+	</div>
+	<h3><%= link_to writer.fullname, blog_writer_path(writer) %></h3>
+	<div class="writer_about">
+		<%= blogofy(writer.about) %>
+		<div class="articles_count">
+			Število objav: <%= link_to writer.articles.count, blog_writer_path(writer) %>
+		</div>
+	</div>
+</div>

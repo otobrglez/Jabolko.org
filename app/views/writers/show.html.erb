@@ -1,0 +1,16 @@
+<% heading "#{@writer.fullname}#{writer_nickname}" %>
+
+<p>
+  <strong>O piscu:</strong><br />
+  <%=h @writer.about %>
+</p>
+<p>
+	<%= link_to "Spletna stran", @writer.www %>
+</p>
+<p><%= link_to "Twitter", @writer.twitter %></p>
+
+<% content_for :actions do -%>
+	<%= link_to "Uredi", edit_writer_path(@writer) %>
+  <%= link_to "Izbriši", @writer, :confirm => 'Si prepričan?', :method => :delete %>
+  <%= link_to "Na seznam piscev", writers_path %>
+<% end -%>

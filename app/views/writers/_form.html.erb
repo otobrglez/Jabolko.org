@@ -1,0 +1,52 @@
+<% form_for @writer do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :fullname, "Ime in priimek" %>
+    <%= f.text_field :fullname %>
+  </p>
+  <p>
+    <%= f.label :nickname, "Vzdevek (pusti prazno, če ga ne želiš objavit)" %>
+    <%= f.text_field :nickname %>
+  </p>
+  <p>
+    <%= f.label :permalink, "Opisen url" %>
+    <%= f.text_field :permalink %>
+  </p>
+  <p>
+    <%= f.label :email, "Email (ce oseba uporablja gravatar za prikazno slikco - ce ne izpolni Avatar url)" %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :avatar, "Avatar url (iz amazon s3)" %>
+    <%= f.text_field :avatar %>
+  </p>
+  <p>
+    <%= f.label :about, "O piscu" %>
+    <%= f.text_area :about %>
+  </p>
+  <p>
+    <%= f.label :www_label, "Ime spletne strani (primer: jabolko.org)" %>
+    <%= f.text_field :www_label %>
+  </p>
+  <p>
+    <%= f.label :www, "Url spletne strani" %>
+    <%= f.text_field :www %>
+  </p>
+  <p>
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter %>
+  </p>
+  <p>
+    <%= f.label :facebook %>
+    <%= f.text_field :facebook %>
+  </p>
+  <p>
+    <%= f.label :visible, "Viden javnosti?" %>
+    <%= f.check_box :visible %>
+  </p>
+  <p>
+    <%= f.label :sex, "Spol" %>
+    <%= f.select('sex', Writer::SEXES) %>
+  </p>
+  <%= f.submit submit_button %>
+<% end %>

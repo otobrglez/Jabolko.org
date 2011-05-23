@@ -1,0 +1,12 @@
+<% heading "Feed Categories" %>
+
+<% for feed_category in @feed_categories %>
+	<h3><%= link_to feed_category.title, feed_category %></h3>
+	<p><%= feed_category.description %></p>
+	<p><%= feed_category.link %></p>
+	<p><%= feed_category.rss_home %></p><br />
+<% end %>
+
+<% content_for :actions do -%>
+	<%= link_to "New Feed Category", new_feed_category_path %>
+<% end -%>

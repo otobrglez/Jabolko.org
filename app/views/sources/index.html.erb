@@ -1,0 +1,12 @@
+<% heading "Viri od clankov" %>
+
+<% for source in @sources %>
+	<p>
+		<%= link_to source.name, source %><br />
+		<%= source.url %>
+	</p><br />
+<% end %>
+
+<% content_for :actions do -%>
+	<%= link_to "Nov vir", new_source_path %>
+<% end -%>

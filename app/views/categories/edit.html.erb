@@ -1,0 +1,7 @@
+<% heading "Urejevalnik kategorije" %>
+
+<%= render :partial => 'form', :locals => { :submit_button => "Potrdi spremembe" } %>
+
+<% content_for :actions do -%>
+	<%= link_to "Prekliči", @category %>
+<% end -%>

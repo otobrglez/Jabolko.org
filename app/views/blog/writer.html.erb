@@ -1,0 +1,22 @@
+<% title @writer.fullname %>
+<div id="writer">
+	<div id="writer_image">
+			<% if @writer.email.present? %>
+				<%= gravatar_for @writer, :size => 120 %>
+			<% elsif @writer.avatar.present? -%>
+				<%= image_tag(@writer.avatar) %>
+			<% else -%>
+				<%= image_tag('https://jabolko.s3.amazonaws.com/website/images/design/person_large.gif') %>
+			<% end -%>
+	</div>
+	<h2><%= @writer.fullname %></h2>
+	<div id="writer_about">
+		<%= blogofy(@writer.about) %>
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="writer_links">
+	<%= writer_links_display(@writer) %>
+</div>
+<%= render :collection => @writer_articles, :partial => 'article_summary', :spacer_template => 'article_spacer', :locals => { :show_num_of_comments => 'false' } %>
+<div id="blank_space_writers"></div>

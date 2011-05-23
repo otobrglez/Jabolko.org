@@ -1,0 +1,45 @@
+<% title @article.title %>
+
+<% content_for :head do -%>
+	<meta name="description" content="<%= blogofy(@article.intro).gsub(%r{</?[^>]+?>}, '') %>" />
+	<link rel="image_src" href="<%= @article.image %>" / >
+<% end -%>
+
+<div id="blog_article">
+	<%= render :partial => 'article', :object => @article, :locals => { :is_view => "show" } %>
+</div>
+
+
+<div class="heading">Posreduj članek naprej</div>
+<div id="share_article">
+	<%= link_to "Delicious",
+							"http://delicious.com/post?url=#{blog_article_url(@article)}&title=#{@article.title}",
+							:class => 'share_delicious', :target => "_blank", :class => "delicious" %>
+	<%= link_to "Twitter",
+							"http://twitter.com/home?status=Berem%20%27#{@article.title}%27%20#{@article.tinyurl}%20(via%20@jabolkoorg)",
+							:class => 'share_twitter', :target => "_blank", :class => "twitter" %>
+	<%= link_to "LinkedIn",
+							"http://www.linkedin.com/shareArticle?mini=true&url=#{blog_article_url(@article)}&title=#{@article.title}",
+							:class => 'share_linkedin', :target => "_blank", :class => "linkedin" %>
+	<%= link_to "Facebook",
+							"http://www.facebook.com/sharer.php?u=#{blog_article_url(@article)}&t=#{@article.title}",
+							:class => 'share_facebook', :target => "_blank", :class => "facebook" %>
+<div class="clear"></div>
+</div>
+
+<div id="comments_wrap">
+	<div id="disqus_thread"></div>
+</div>
+<script type="text/javascript">
+	var disqus_identifier = 'article-<%= @article.id %>';
+	var disqus_title = '<%= @article.title %>';
+	var disqus_category_id = '396478';
+	
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://jabolko.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=jabolko">comments powered by Disqus.</a></noscript>
+

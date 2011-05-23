@@ -1,0 +1,27 @@
+<div id="logo">
+	<%= link_to image_tag('jabolko.png', :alt => "Jabolko.org"), root_path %>
+</div>
+<ul id="topnav">
+	<li<%= " class='selected'" if is_root? %>><%= link_to "<span>Domov</span>", root_path %></li>
+	<%= topmenu_link_to "Novice", 'novice' %>
+	<%= topmenu_link_to "Mac", 'mac' %>
+	<%= topmenu_link_to "iPhone / iPod", 'iphone-ipod' %>
+	<%= topmenu_link_to "iPad", 'ipad' %>
+	<%= topmenu_link_to "Šnelkurs", 'snelkurs' %>
+	<li><%= link_to "<span>Forum</span>", 'http://forum.jabolko.org/' %></li>
+</ul>
+<div class="module_search">
+	<form action="http://www.jabolko.org/iskanje" class="module_search_form" id="cse-search-box">
+	    <input type="hidden" name="cx" value="014682982305997171635:cjy7ex0xqts" />
+	    <input type="hidden" name="cof" value="FORID:10" />
+	    <input type="hidden" name="ie" value="UTF-8" />
+	    <input type="text" name="q" id="q" size="31" />
+	</form>
+</div>
+<div id="about">
+	<h1>Apple uporabniki Slovenije</h1>
+	<p>Združenje uporabnikov tehnologij podjetja Apple</p>
+	<%= link_to image_tag('twitter_sidebar.png'), 'http://twitter.com/jabolkoorg', :id => 'twitter_sidebar', :target => "_blank" %>
+	<%= link_to image_tag('facebook_sidebar.png'), 'http://www.facebook.com/group.php?gid=15631334625', :id => 'facebook_sidebar', :target => "_blank"  %>
+	<%= link_to image_tag('rss_header.png'), 'http://feeds.feedburner.com/jabolkoorg-sok', :id => 'koornk_sidebar', :target => "_blank" %>
+</div>

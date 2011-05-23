@@ -1,0 +1,27 @@
+body {
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
+img {
+	margin:180px 0 50px;
+}
+
+h1, p {
+	color:#383838;
+	font-family:'Myriad Pro', Arial, sans-serif;
+	text-align:center;
+	font-weight:normal;
+}
+
+h1 {
+	font-size:27px;
+	margin:0 0 20px;
+}
+
+p {
+	font-size:16px;
+	margin:0;
+	padding:0 0 50px;
+}

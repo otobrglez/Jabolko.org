@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title><%= h(page_head_title(yield(:title))) %></title>
+		<meta name="title" content="<%= h(page_head_title(yield(:title))) %>" />
+		<% if yield(:head) %>
+			<%= yield(:head) %>
+		<% else -%>
+			<link rel="image_src" href="/images/jabolko_facebook.png" />
+			<meta name="description" content="Jabolko.org je neodvisni osrednji vir znanja Apple uporabnikov Slovenija. Blog s svežimi novicami in članki iz jabolčnega sveta." />
+			<meta name="keywords" content="apple, jabolko, slovenija, mac, iphone, ipod, imac, macbook, macbook pro, apple users of slovenia" />
+		<% end -%>
+		<link type="application/atom+xml" rel="alternate" title="Jabolko.org Sok" href="http://feeds.feedburner.com/jabolkoorg-sok" />
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link rel="apple-touch-icon" href="/iphone_57x57.png" />
+		<%= stylesheet_link_merged :base %>
+   	<%#= stylesheet_link_tag 'reset', 'application', 'shCore', 'shThemeDefault' %>
+
+		<% if request.env['HTTP_USER_AGENT'] %>
+			<% unless request.env['HTTP_USER_AGENT'].downcase.index('macintosh') %>
+				<style type="text/css">
+					#rss a {
+						font:23px Arial;
+					}
+				</style>
+			<% end -%>
+		<% end -%>
+
+		<%= javascript_include_merged :base %>
+  </head>
+  <body>
+		<% display_floating_banner = false %>
+		<% if display_floating_banner %>
+			<div id="floating_banner">
+				<div id="floating_banner_content">
+					<%= image_tag('floating_banner/iphone_ipad.png', :class => "floating_banner_books") %>
+					<%= link_to(image_tag('floating_banner/nova_storitev_razvijalci.png'), 'http://www.razvijalci.si/', :target => "_blank", :class => "floating_banner_title") %>
+				</div>
+				<%= link_to(image_tag('floating_banner/close.png'), "#", :class => "floating_banner_close") %>
+			</div>
+		<% end -%>
+		<div id="container">
+			<div id="header">
+				<%= render :partial => "layouts/header" %>
+			</div>
+      <div id="main">
+				<% if show_title? && has_role?(:admin) -%>
+					<h2 id="pagetitle"><%= yield(:heading) %><span><%= yield(:actions) %></span></h2>
+				<% end -%>
+      	<%= yield(:main) or yield %>
+      </div>
+			<div id="sidebar">
+				<%= render :partial => "layouts/sidebar" %>
+			</div>
+			<div class="clear"></div>
+    </div>
+		<%= render :partial => "layouts/infobox" %>
+		<%= render :partial => "layouts/footer" %>
+		
+		<script type="text/javascript">
+		var disqus_shortname = 'jabolko';
+		(function () {
+		  var s = document.createElement('script'); s.async = true;
+		  s.src = 'http://disqus.com/forums/jabolko/count.js';
+		  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		}());
+		</script>
+
+		<script type="text/javascript" src="http://include.reinvigorate.net/re_.js"></script>
+		<script type="text/javascript">
+		try {
+		reinvigorate.track("5062a-34i0i8k790");
+		} catch(err) {}
+		</script>
+		
+		<%= render :partial => "layouts/google_analytics" %>
+  </body>
+</html>

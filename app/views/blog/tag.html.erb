@@ -1,0 +1,16 @@
+<% title @tag.name.titleize %>
+<h2 class="heading2">
+	Članki z značko '<%= @tag.name %>'
+</h2>
+<div class="order_switcher">
+	<span>
+		<%= link_to_unless_current "Po datumu", blog_tag_path(@tag) %>
+	</span>
+	<div class="vertical_spacer_tags"></div>
+	<span>
+		<%= link_to_unless_current "Po številu komentarjev", blog_tag_order_path(@tag) %>
+	</span>
+</div>
+
+<%= render :partial => 'article_summary', :collection => @tag_articles, :spacer_template => 'article_spacer', :locals => { :show_num_of_comments => "true" } %>
+<div id="blank_space"></div>

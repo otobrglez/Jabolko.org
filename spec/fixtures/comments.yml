@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer         not null, primary key
+#  body       :text
+#  name       :string(255)
+#  email      :string(255)
+#  article_id :integer
+#  www        :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  author_ip  :string(255)
+#
+
+one:
+  body: MyText
+  name: MyString
+  email: MyString
+  article_id: 1
+  www: MyString
+
+two:
+  body: MyText
+  name: MyString
+  email: MyString
+  article_id: 1
+  www: MyString

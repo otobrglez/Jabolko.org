@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: sources
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  url        :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+one:
+  name: MyString
+  url: MyString
+
+two:
+  name: MyString
+  url: MyString

@@ -1,0 +1,12 @@
+<% form_for @page do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title, "Naslov" %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body, "Vsebina" %>
+    <%= f.text_area :body %>
+  </p>
+  <%= f.submit submit_button %>
+<% end %>

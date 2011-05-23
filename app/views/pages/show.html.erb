@@ -1,0 +1,17 @@
+<% heading 'Staticna stran' %>
+
+<div class="article page">
+	<h2><%= "#{@page.title}" %></h2>
+	<span class="created_at">
+		Napisalo Uredništvo Jabolko
+		24. decembra 2009
+	</span>
+	<div class="content">
+	<%= textilize(@page.body) %>
+	</div>
+</div>
+
+<% content_for :actions do -%>
+	<%= link_to "Uredi", edit_page_path(@page) %>
+  <%= link_to "Na seznam staticnih strani", pages_path %>
+<% end -%>

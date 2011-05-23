@@ -1,0 +1,20 @@
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :fullname, "Ime in priimek" %>
+    <%= f.text_field :fullname %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+	<p>
+    <%= f.label :password, "Geslo" %>
+    <%= f.password_field :password %>
+  </p>
+	<p>
+    <%= f.label :password_confirmation, "Ponovi geslo" %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <%= f.submit "Potrdi" %>
+<% end %>

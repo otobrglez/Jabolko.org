@@ -1,0 +1,7 @@
+<% heading "Dodaj kategorijo" %>
+
+<%= render :partial => 'form', :locals => { :submit_button => "Dodaj kategorijo" } %>
+
+<% content_for :actions do -%>
+	<%= link_to "Na seznam kategorij", categories_path %>
+<% end -%>

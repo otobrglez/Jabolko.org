@@ -1,0 +1,24 @@
+<% heading "Feed Category" %>
+
+<p>
+  <strong>Title:</strong>
+  <%=h @feed_category.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @feed_category.description %>
+</p>
+<p>
+  <strong>Link:</strong>
+  <%=h @feed_category.link %>
+</p>
+<p>
+  <strong>Rss home:</strong>
+  <%=h @feed_category.rss_home %>
+</p>
+
+<% content_for :actions do -%>
+	<%= link_to "Edit", edit_feed_category_path(@feed_category) %>
+  <%= link_to "Destroy", @feed_category, :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to "View All", feed_categories_path %>
+<% end -%>

@@ -1,0 +1,61 @@
+/*Article Form*/
+
+#add_new_source {
+	
+}
+
+#new_article_source {
+	display:none;
+}
+
+#admin_footer {
+	border-top:1px solid #D9D9D9;
+	padding:15px 0 15px;
+	text-align:center;
+}
+
+#admin_desc {
+	width:950px;
+	margin:0 auto;
+	text-align:left;
+	color:#989898;
+	font-size:11px;
+}
+
+#articleTabs .article_tab_links {
+	font-size:16px;
+	margin:0 0 5px;
+}
+
+#main .preview_title {
+	font-size:28px;
+	margin:30px 0 20px;
+	border-bottom:1px solid #D9D9D9;
+	padding:0 0 10px;
+	color:#2E2F2E;
+}
+
+#articleTabs {
+	margin:0 0 15px;
+}
+
+.edit_comment {
+	position:relative;
+}
+
+.edit_comment span {
+color:#8BC53F;
+font-size:16px;
+line-height:14px;
+position:absolute;
+}
+
+.article_comments {
+	position:absolute;
+	bottom:0;
+	right:0;
+}
+
+#main #writer_visible {
+	width:auto;
+}

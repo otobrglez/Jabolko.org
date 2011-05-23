@@ -1,0 +1,10 @@
+<div class="article_summary">
+	<div class="summary_image"><%= link_to(image_tag(article_summary.image), blog_article_path(article_summary)) %></div>
+	<h3><%= link_to article_summary.title, blog_article_path(article_summary) %></h3>
+	<div class="summary_intro"><%= blogofy(article_summary.intro) %></div>
+	<div class="readmore">
+		<%= link_to "Preberi cel članek", blog_article_path(article_summary), :class => 'readmore_link' %><% if show_num_of_comments == 'true' %><span>Št. komentarjev: <%= link_to article_summary.comments_count, blog_article_path(article_summary) %></span>
+		<% end -%>
+	</div>
+	<div class="clear"></div>
+</div>

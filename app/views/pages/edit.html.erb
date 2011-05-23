@@ -1,0 +1,8 @@
+<% heading "Uredi staticno stran" %>
+
+<%= render :partial => 'form', :locals => { :submit_button => 'Potrdi spremembe' } %>
+
+<% content_for :actions do -%>
+	<%= link_to "Preklici", @page %>
+  <%= link_to "Prikazi vse", pages_path %>
+<% end -%>

@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  body       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+one:
+  title: MyString
+  body: MyString
+
+two:
+  title: MyString
+  body: MyString

@@ -1,0 +1,11 @@
+<% heading "Prikaz članka" %>
+<% title @article.title %>
+
+<div id="blog_article">
+	<%= render :partial => @article, :locals => { :is_view => "show" } %>
+</div>
+
+<% content_for :actions do -%>
+	<%= link_to "Uredi", edit_article_path(@article) %>
+  <%= link_to "Izbriši", @article, :confirm => 'Si prepričan?', :method => :delete %>
+<% end -%>

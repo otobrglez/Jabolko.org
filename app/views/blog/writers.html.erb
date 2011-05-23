@@ -1,0 +1,16 @@
+<% title "Seznam avtorjev" %>
+<h2 class="heading2">
+	Seznam avtorjev
+</h2>
+<div class="order_switcher">
+	<span>
+		<%= link_to_unless_current "Po abecedi", blog_writers_path %>
+	</span>
+	<div class="vertical_spacer_writers"></div>
+	<span>
+		<%= link_to_unless_current "Po številu objav", blog_writer_order_path %>
+	</span>
+</div>
+
+<%= render :collection => @writers, :partial => 'writer', :spacer_template => 'article_spacer' %>
+<div id="blank_space_writers"></div>

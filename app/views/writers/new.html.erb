@@ -1,0 +1,7 @@
+<% heading "Dodaj pisca" %>
+
+<%= render :partial => 'form', :locals => { :submit_button => "Dodaj pisca" } %>
+
+<% content_for :actions do -%>
+	<%= link_to "Prekliči", writers_path %>
+<% end -%>

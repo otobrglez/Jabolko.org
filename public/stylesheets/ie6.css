@@ -1,0 +1,83 @@
+#topnav li {
+	float:left;
+	height:24px;
+	margin:0 20px 0 0;
+}
+
+#topnav a, #topnav a span {
+	font-size:15px;
+	color:#fff;
+	line-height:24px;
+	display:inline;
+}
+
+#topnav a span {
+	padding:3px 11px;
+}
+
+.pagination {
+	height:27px;
+}
+
+.pagination a, .pagination .current {
+	position:relative;
+	top:1px;
+}
+
+.pagination a, .pagination .current {
+	background:url(../images/pagnav_l.gif) no-repeat left 0;
+	line-height:26px;
+	padding:0;
+	margin:0 3px;
+	color:#3fa9f5;
+	position:relative;
+}
+
+.pagination a span, .pagination .current span {
+	background:url(../images/pagnav_r.gif) no-repeat right 0;
+	padding:6px 8px;
+}
+
+.pagination a:hover span, .pagination .current span {
+	background:url(../images/pagnav_rh.gif) no-repeat right 0;
+	padding:6px 8px;
+}
+
+.pagination .current, .pagination a:hover {
+	background:url(../images/pagnav_lh.gif) no-repeat left 0;
+	color:#fff;
+}
+
+.menu ul.list li span {
+	margin:0;
+	display:block;
+	width:15px;
+	position:absolute;
+	left:0;
+	top:8px;
+	color:#4D4D4D;
+	line-height:17px;
+}
+
+#ie6_topbar {
+	height:32px;
+	background:url(../images/ie6_topbar_bg.gif) repeat-x 0 0;
+	text-align:center;
+}
+
+body {
+/*	background: url(../images/bg.png) repeat-x 0 32px;*/
+}
+
+#ie6_text {
+	color:#fff;
+	margin:0 auto;
+	text-align:left;
+	width:950px;
+	line-height:30px;
+}
+
+#ie6_text a {
+	position:relative;
+	top:;
+}

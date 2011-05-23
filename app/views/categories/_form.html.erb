@@ -1,0 +1,12 @@
+<% form_for @category do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title, "Naslov" %>
+    <%= f.text_field :title %>
+  </p>
+	<p>
+    <%= f.label :permalink, "Opisen url" %>
+    <%= f.text_field :permalink %>
+  </p>
+  <%= f.submit submit_button %>
+<% end %>

@@ -1,0 +1,21 @@
+<% heading "Vir" %>
+
+<p>
+  <strong>Povezava vira</strong><br />
+	<%= link_to @source.name, @source.url %>
+</p>
+<br />
+<h3>Clanki iz tega vira</h3>
+
+<% unless @source.articles.empty? %>
+	<%= render :partial => @source.articles, :spacer_template => "articles/article_spacer", :locals => { :is_view => "index" } %>
+	<div id="blank_space"></div>
+<% else -%>
+	Iz tega vira ni nobenega clanka.
+<% end -%>
+
+<% content_for :actions do -%>
+	<%= link_to "Uredi", edit_source_path(@source) %>
+  <%= link_to "Izbriši", @source, :confirm => 'Si prepričan?', :method => :delete %>
+  <%= link_to "Na seznam virov", sources_path %>
+<% end -%>

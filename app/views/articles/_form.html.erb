@@ -1,0 +1,110 @@
+<div style="background:#eee;padding:5px;margin:0 20px 10px 0;line-height:18px">
+	<%= error_messages_for :article %>
+</div>
+<%#= @article.errors.inspect %>
+
+<% form_for @article do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :permalink %>
+    <%= f.text_field :permalink %>
+  </p>
+	<p>
+    <%= f.label :image, "Main Image URL" %>
+    <%= f.text_field :image %>
+  </p>
+	<p>
+    <%= f.label :tag_names, "Tags - seperate with space" %>
+    <%= f.text_field :tag_names %>
+  </p>
+	<p>
+    <%= f.label :tinyurl, "Tinyurl link" %>
+    <%= f.text_field :tinyurl %>
+  </p>
+	<p>
+    <%= f.label :source_id, "Source" %>
+    <%= f.collection_select :source_id, Source.all, :id, :name, :prompt => "Izberi vir" %>
+		ali <%= link_to "dodaj novega", '#', :id => 'add_new_source' %>
+		<div id="new_article_source">
+			<p>
+			<%= f.label :new_source_name, "Source Name" %>
+			<%= f.text_field :new_source_name %>
+			</p>
+			<p>
+			<%= f.label :new_source_url, "Source URL" %>
+			<%= f.text_field :new_source_url %>
+			</p>
+		</div>
+  </p>
+	<p>
+		<%= f.label :created_at %>
+		<%= f.datetime_select :created_at %>
+	</p>
+	<span class="form_span">
+		ID Članka (predstavlja ime mape za slike): 
+		<% if @article.id %>
+			<%= @article.id %>
+		<% else %>
+			Preden lahko dodaš slike, moras članek shranit.
+		<% end %>
+	</span>
+	<span class="form_span">
+		<%= f.label :published %>
+		<%= f.check_box :published %>
+	</span>
+	<span class="form_span">
+		<%= label_tag "Authors:" %><br /><br />
+		<% for writer in Writer.all %>
+			<%= check_box_tag "article[writer_ids][]", writer.id, @article.writers.include?(writer) %> <%= writer.fullname %><br />
+		<% end %>
+	</span>
+	<span class="form_span">
+		<%= label_tag "Categories" %>
+		<% for category in Category.all %>
+			<%= radio_button_tag "article[category_ids][]", category.id, @article.categories.include?(category) %> <%= category.title %>
+		<% end %>
+	</span>
+	<p>
+		<%= link_to "Priži/skrij Textile plonkec", "#", :class => "textile_plonkec" %>
+	</p>
+	<div class="textile_plonkec" style="display:none">
+		<h4>Seznam ukazov</h4>
+		<%= link_to "Popolni seznam ukazov", "http://redcloth.org/textile/", :target => "_blank" %><br /><br />
+		*bold*<br /><br />
+		_italic_<br /><br />
+		* seznam s pikicami<br /><br />
+		# seznam s številkami<br /><br />
+		h3. veliki naslov<br /><br />
+		h4. mali naslov<br /><br />
+		h4{margin:0 0 15px}. naslov z odmikom spodaj<br /><br />
+		<%= link_to "Jabolko.org", "http:www.jabolko.org/" %> ... "Jabolko.org":http://www.jabolko.org/<br /><br />
+	</div>
+	<div id="articleTabs">
+		<h3 class="article_tab_links"><%= link_to "Uvodno besedilo", '#articleTab1' %> / <%= link_to "Glavno besedilo", '#articleTab2' %></h3>
+		<div id="articleTab1">
+			<p>
+		    <%= f.text_area :intro %>
+		  </p>
+			<p class="preview_title">Predogled članka na seznamu</p>
+			<% if params[:article_preview] || action_is('edit') %>
+				<%= render 'article', :object => @article, :is_view => 'index' %>
+			<% end %>
+		</div>
+	  <div id="articleTab2">
+	  	<p>
+		    <%= f.text_area :body %>
+		  </p>
+			<p class="preview_title">Predogled celotnega članka</p>
+			<% if params[:article_preview] || action_is('edit') %>
+				<%= render 'article', :object => @article, :is_view => 'show' %>
+			<% end %>
+	  </div>
+	</div>
+	<br />
+	<%= submit_tag 'Osveži predogled', :name => 'article_preview' %>
+  <%= f.submit submit_button %> ali <%= link_to "Prekliči", articles_path %>
+<% end %>
+<br />

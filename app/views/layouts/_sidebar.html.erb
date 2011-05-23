@@ -1,0 +1,111 @@
+<!-- <div id="rss">
+	<%= link_to "Jabolčni RSS đuser", 'http://feeds.feedburner.com/jabolkoorg-sok', :target => '_blank' %>
+</div> -->
+
+	<%= render :partial => 'layouts/sidebar_banner' %>
+
+<div class="menu" id="tabed_module">
+	<div class="heading">
+		Zadnji komentarji
+	</div>
+	<p>Seznam zadnjih sedmih komentarjev na blogu.</p>
+	<div class="tabs">
+		<div class="tabNav">
+			<ul class="tabNav">
+				<li><%= link_to "Blog", '#blog' %></li>
+				<li><%= link_to "Forum", '#forum' %></li>
+			</ul>
+		</div>
+		<div class="tabContent">
+			<div id="blog">
+				<ul class="list">
+				</ul>
+			</div>
+			<div id="forum">
+				<iframe frameborder="0" src ="http://forum.jabolko.org/latest_posts.php" width="100%" height="239" scrolling="no"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% unless action_name == 'search' and controller_name == 'blog' -%>
+	<div class="menu">
+		<div class="heading">
+			Priljubljeno
+		</div>
+		<p>Najbolj priljubljeni članki na blogu.</p>
+		<ul class="list">
+			<li>
+				<a target="_self" href="/blog/79-bliznjice-za-mac">Bližnjice na Mac-u</a>
+			</li>
+			<li>
+				<a target="_self" href="/blog/146-zakaj-se-nakup-maca-ne-izplaca">Razlogi zakaj se nakup Mac-a ne ...</a>
+			</li>
+			<li>
+				<a target="_self" href="/blog/190-razlogi-zakaj-se-nakup-ipada-ne-izplaca">11 Razlogov zakaj se nakup iPad-a...</a>
+			</li>
+			<li>
+				<a target="_self" href="/blog/186-iphone-4">iPhone 4: to spremeni vse</a>
+			</li>
+			<li>
+				<a target="_self" href="/blog/162-jailbreak-razlogi-za-in-proti">Jailbreak - razlogi za in proti</a>
+			</li>
+			<li>
+				<a target="_self" href="/blog/101-ipad-tablica-kot-si-je-se-niste-predstavljali">iPad - tablica kot si je še niste...</a>
+			</li>
+			<li>
+				<a target="_self" href="/blog/75-prihaja-novi-iphone-4-0">Prihaja novi iPhone 4.0</a>
+			</li>
+		</ul>
+	</div>
+<% end -%>
+
+	<div class="menu">
+		<div class="heading">
+			Vsebina
+		</div>
+		<p>Najdi vsebino po avtorjih in značkah</p>
+		<ul class="list">
+			<%= li_link_to 'Seznam avtorjev', blog_writers_path, '_self' %>
+			<%= li_link_to 'Seznam značk', blog_tags_path, '_self' %>
+			<%= li_link_to 'Postani avtor', 'mailto:sodeluj@jabolko.org', '_self' %>
+			<%= li_link_to 'Prijavi napako', 'mailto:info@jabolko.org', '_self' %>
+		</ul>
+	</div>
+
+<% unless action_name == 'search' and controller_name == 'blog' -%>
+	<div class="menu" id="feedParser">
+		<div class="heading">
+			RSS iz Apple.com
+		</div>
+		<p>Novice, posodobitve, programi in napovedniki</p>
+		<div class="tabs">
+			<div class="tabNav">
+				<ul class="tabNav">
+					<li><%= link_to "Hot News", '#feed_1' %></li>
+					<li><%= link_to "Top Free Apps", '#feed_2' %></li>
+					<li><%= link_to "Top Paid Apps", '#feed_3' %></li>
+					<li><%= link_to "Just Added", '#feed_4' %></li>
+					<li><%= link_to "Drivers", '#feed_6' %></li>
+					<li><%= link_to "Movie Trailers", '#feed_5' %></li>
+				</ul>
+			</div>
+			<div class="tabContent">
+				<% cache('feeds_from_apple', :expires_in => 1.hour) do %>
+					<% for feed_category in FeedCategory.all(:order => :id) %>
+						<div id="feed_<%= feed_category.id %>">
+							<ul class="list">
+								<% i = 1 %>
+								<% for feed_entry in feed_category.feed_entries.slice!(0, 10) %>
+									<li><span><%= "#{i}. " %></span><%= link_to feed_entry.title, feed_entry.url, :target => "_blank" %></li>
+									<% i = i + 1 %>
+								<% end %>
+								<li class="more"><%= link_to "Poglej vse... <em>(povezava na Apple.com)</em>", feed_category.rss_home, :target => '_blank' %></li>
+							</ul>
+						</div>
+					<% end %>
+				<% end -%>
+			</div>
+		</div>
+	</div>
+<% end -%>

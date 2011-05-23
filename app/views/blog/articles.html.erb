@@ -1,0 +1,10 @@
+<%
+if @category
+	title @category.title
+else
+	title "Apple uporabniki Slovenija"
+end
+%>
+
+<%= render :partial => 'article', :collection => @articles, :spacer_template => "article_spacer", :locals => { :is_view => "index" } %>
+<%= articles_pagination(@articles) || '<div id="blank_space"></div>' %>

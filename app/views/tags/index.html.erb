@@ -1,0 +1,9 @@
+<% title "Seznam značk" %>
+
+<ul>
+<% for tag in @tags %>
+	<% unless tag.articles.blank? %>
+		<li><%= link_to tag.name.capitalize, tag %></li>
+	<% end -%>
+<% end %>
+</ul>

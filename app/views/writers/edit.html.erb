@@ -1,0 +1,8 @@
+<% heading "Urejanje pisca" %>
+
+<%= render :partial => 'form', :locals => { :submit_button => "Potrdi spremembe" } %>
+
+<% content_for :actions do -%>
+	<%= link_to "Izbriši", @writer, :confirm => "Si prepričan?", :method => :delete %>
+  <%= link_to "Prekliči", writers_path %>
+<% end -%>

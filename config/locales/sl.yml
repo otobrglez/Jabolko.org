@@ -1,0 +1,67 @@
+# Croatian translation for Ruby on Rails
+# by Marjan Vrban (mvrban@gmail.com)
+
+sl:
+  date:
+    formats:
+      default: "%e. %B %Y"
+      short: "%e. %B %Y"
+      long: "%e. %B %Y"
+      only_day: "%e"
+
+    day_names: [nedelja, ponedeljek, torek, sreda, četrtek, petek, sobota]
+    abbr_day_names: [ned, pon, tor, sre, čet, pet, sob]
+    month_names: [~, januar, februar, marec, april, maj, junij, julij, avgust, september, oktober, november, december]
+    abbr_month_names: [~, jan, feb, mar, apr, maj, jun, jul, avg, sep, okt, nov, dec]
+    order: [ :day, :month, :year ]
+
+  time:
+    formats:
+      default: "%e. %B %Y ob %H:%M:%S"
+      time: "%H:%M"
+      short: "%e. %B %Y ob %H:%M:%S"
+      long: "%e. %B %Y ob %H:%M:%S"
+      only_second: "%S"
+
+      datetime:
+        formats:
+          default: "%e. %B %Y ob %H:%M:%S"
+
+    am: 'AM'
+    pm: 'PM'
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "1 error prohibited this {{model}} from being saved"
+          other:  "{{count}} errors prohibited this {{model}} from being saved"
+        # The variable :count is also available
+        body: "There were problems with the following fields:"
+        
+      # The values :model, :attribute and :value are always available for interpolation
+      # The value :count is available when applicable. Can be used for pluralization.
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is {{count}} characters)"
+        too_short: "is too short (minimum is {{count}} characters)"
+        wrong_length: "is the wrong length (should be {{count}} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than {{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        equal_to: "must be equal to {{count}}"
+        less_than: "must be less than {{count}}"
+        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        odd: "must be odd"
+        even: "must be even"
+        record_invalid: "Validation failed: {{errors}}"
+        # Append your own errors here or at the model/attributes scope.
+
+      full_messages:
+        format: "{{attribute}} {{message}}"
