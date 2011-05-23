@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
   
   def redirect_to_www
-    unless ['jabolko-blog.dev', 'www.jabolko.org'].include?(request.host)
+    unless ['novo-jabolko-org.heroku.com','jabolko-blog.dev', 'www.jabolko.org'].include?(request.host)
       redirect_to "http://www.jabolko.org#{request.request_uri}"
     end
   end
