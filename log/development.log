@@ -4469,3 +4469,213 @@ Rendered layouts/_infobox (4.0ms)
 Rendered layouts/_footer (0.9ms)
 Rendered layouts/_google_analytics (0.1ms)
 Completed in 121ms (View: 76, DB: 14) | 200 OK [http://jabolko-blog.dev/]
+  [4;36;1mSQL (1.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateArticles (20091121123842)
+Migrating to CreateWriters (20091121230638)
+Migrating to CreateArticlesWriters (20091121234207)
+Migrating to CreateCategories (20091122233943)
+Migrating to CreateArticlesCategories (20091123110304)
+Migrating to CreateComments (20091123162842)
+Migrating to CreateSoons (20091124131757)
+Migrating to CreateFeedEntries (20091128173454)
+Migrating to CreateFeedCategories (20091128173606)
+Migrating to CreateUsers (20091205162852)
+Migrating to AddRssHomeToFeedCategories (20091212220553)
+Migrating to AddSexToWriters (20091214012324)
+Migrating to AddCommentsCountToArticles (20091218102600)
+Migrating to AddAuthorIpToComments (20091220103840)
+Migrating to AddTinyurlToArticles (20091223124801)
+Migrating to CreateTags (20091223144520)
+Migrating to CreateTaggings (20091223144600)
+Migrating to CreatePages (20091223191240)
+Migrating to CreateSources (20091226152835)
+Migrating to AddSourceIdToArticles (20091226152908)
+Migrating to AddNicknameToWriters (20100201220526)
+Migrating to AddPermalinkToWriters (20100217152247)
+Migrating to AddVisibleToWriters (20100217153338)
+Migrating to AddEmailToWriters (20100219145342)
+Migrating to AddWwwLabelToWriters (20100222143621)
+Migrating to AddAvatarToWriters (20100223192312)
+Migrating to AddFacebookToWriters (20100223221426)
+Migrating to AddUserAgentAndReferrerToComments (20100228164505)
+Migrating to AddSpamToComments (20100228175118)
+Migrating to AddFullnameToWriters (20110313204354)
+Migrating to CreateBanners (20110510205038)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("admins")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("app_comments")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("apps")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("articles")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("articles_categories")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("articles_writers")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("banners")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("categories")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("comments")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("developers")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("feed_categories")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("feed_entries")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("pages")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("soons")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("sources")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("taggings")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("tags")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("writers")[0m
+
+
+Processing BlogController#articles (for 127.0.0.1 at 2011-05-23 10:32:34) [GET]
+  Parameters: {"action"=>"articles", "page"=>1, "controller"=>"blog"}
+Redirected to http://www.jabolko.org/
+Filter chain halted as [:redirect_to_www] rendered_or_redirected.
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing BlogController#articles (for 127.0.0.1 at 2011-05-23 10:32:56) [GET]
+  Parameters: {"action"=>"articles", "page"=>1, "controller"=>"blog"}
+  [4;36;1mArticle Load (65.9ms)[0m   [0;1mSELECT * FROM "articles" WHERE (published = 't') ORDER BY created_at DESC LIMIT 5 OFFSET 0[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT count(*) AS count_all FROM "articles" WHERE (published = 't') [0m
+Rendering template within layouts/application
+Rendering blog/articles
+Rendered blog/_article_spacer (8.7ms)
+  [4;36;1mWriter Load (2.4ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 284 ) [0m
+  [4;35;1mCategory Load (21.5ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 284 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 284 ) LIMIT 1[0m
+  [4;35;1mTag Load (2.1ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 284)) [0m
+Rendered blog/_article (204.6ms)
+  [4;36;1mWriter Load (0.7ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 281 ) [0m
+  [4;35;1mCategory Load (0.5ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 281 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 281 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.5ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 281)) [0m
+Rendered blog/_article (79.6ms)
+  [4;36;1mWriter Load (0.6ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 280 ) [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 280 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 280 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.5ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 280)) [0m
+Rendered blog/_article (9.6ms)
+  [4;36;1mWriter Load (0.9ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 279 ) [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 279 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 279 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.5ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 279)) [0m
+Rendered blog/_article (9.6ms)
+  [4;36;1mWriter Load (0.6ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 277 ) [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 277 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 277 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.4ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 277)) [0m
+Rendered blog/_article (8.5ms)
+Rendered layouts/_header (4.0ms)
+  [4;36;1mBanner Load (0.2ms)[0m   [0;1mSELECT * FROM "banners" WHERE ("banners"."published" = 't') LIMIT 1[0m
+Rendered layouts/_sidebar_banner (19.6ms)
+Cached fragment hit: feeds_from_apple (0.3ms)
+  [4;35;1mFeedCategory Load (0.7ms)[0m   [0mSELECT * FROM "feed_categories" ORDER BY id[0m
+  [4;36;1mFeedEntry Load (1.9ms)[0m   [0;1mSELECT * FROM "feed_entries" WHERE ("feed_entries".feed_category_id = 1) [0m
+  [4;35;1mFeedEntry Load (1.0ms)[0m   [0mSELECT * FROM "feed_entries" WHERE ("feed_entries".feed_category_id = 2) [0m
+  [4;36;1mFeedEntry Load (1.0ms)[0m   [0;1mSELECT * FROM "feed_entries" WHERE ("feed_entries".feed_category_id = 3) [0m
+  [4;35;1mFeedEntry Load (3.3ms)[0m   [0mSELECT * FROM "feed_entries" WHERE ("feed_entries".feed_category_id = 4) [0m
+  [4;36;1mFeedEntry Load (1.6ms)[0m   [0;1mSELECT * FROM "feed_entries" WHERE ("feed_entries".feed_category_id = 5) [0m
+  [4;35;1mFeedEntry Load (1.5ms)[0m   [0mSELECT * FROM "feed_entries" WHERE ("feed_entries".feed_category_id = 6) [0m
+Cached fragment miss: feeds_from_apple (0.2ms)
+Rendered layouts/_sidebar (76.6ms)
+Rendered layouts/_infobox (7.2ms)
+Rendered layouts/_footer (2.4ms)
+Rendered layouts/_google_analytics (1.0ms)
+Completed in 711ms (View: 446, DB: 110) | 200 OK [http://jabolko-blog.dev/]
+
+
+Processing BlogController#articles (for 127.0.0.1 at 2011-05-23 10:33:27) [GET]
+  Parameters: {"permalink"=>"iphone-ipod", "action"=>"articles", "page"=>1, "controller"=>"blog"}
+  [4;36;1mCategory Load (0.3ms)[0m   [0;1mSELECT * FROM "categories" WHERE ("categories"."permalink" = 'iphone-ipod') LIMIT 1[0m
+  [4;35;1mArticle Load (1.5ms)[0m   [0mSELECT "articles".* FROM "articles" INNER JOIN "articles_categories" ON "articles".id = "articles_categories".article_id WHERE (published = 't') AND ("articles_categories".category_id = 3 ) ORDER BY created_at DESC LIMIT 5 OFFSET 0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "articles" INNER JOIN "articles_categories" ON "articles".id = "articles_categories".article_id WHERE (published = 't') AND ("articles_categories".category_id = 3 ) [0m
+Rendering template within layouts/application
+Rendering blog/articles
+Rendered blog/_article_spacer (0.1ms)
+  [4;35;1mWriter Load (0.7ms)[0m   [0mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 217 ) [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 217 ) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 217 ) LIMIT 1[0m
+  [4;36;1mTag Load (0.7ms)[0m   [0;1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 217)) [0m
+Rendered blog/_article (98.7ms)
+  [4;35;1mWriter Load (0.6ms)[0m   [0mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 163 ) [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 163 ) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 163 ) LIMIT 1[0m
+  [4;36;1mTag Load (0.5ms)[0m   [0;1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 163)) [0m
+Rendered blog/_article (9.6ms)
+  [4;35;1mWriter Load (0.6ms)[0m   [0mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 162 ) [0m
+  [4;36;1mCategory Load (0.4ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 162 ) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 162 ) LIMIT 1[0m
+  [4;36;1mTag Load (0.6ms)[0m   [0;1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 162)) [0m
+Rendered blog/_article (9.1ms)
+  [4;35;1mWriter Load (0.6ms)[0m   [0mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 137 ) [0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 137 ) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 137 ) LIMIT 1[0m
+  [4;36;1mTag Load (0.5ms)[0m   [0;1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 137)) [0m
+Rendered blog/_article (10.7ms)
+  [4;35;1mWriter Load (0.6ms)[0m   [0mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 131 ) [0m
+  [4;36;1mCategory Load (0.5ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 131 ) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 131 ) LIMIT 1[0m
+  [4;36;1mTag Load (0.5ms)[0m   [0;1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 131)) [0m
+Rendered blog/_article (9.0ms)
+Rendered layouts/_header (3.0ms)
+  [4;35;1mBanner Load (0.2ms)[0m   [0mSELECT * FROM "banners" WHERE ("banners"."published" = 't') LIMIT 1[0m
+Rendered layouts/_sidebar_banner (5.8ms)
+Cached fragment hit: feeds_from_apple (0.4ms)
+Rendered layouts/_sidebar (10.0ms)
+Rendered layouts/_infobox (4.9ms)
+Rendered layouts/_footer (1.1ms)
+Rendered layouts/_google_analytics (0.1ms)
+Completed in 202ms (View: 163, DB: 10) | 200 OK [http://jabolko-blog.dev/iphone-ipod]
+
+
+Processing BlogController#articles (for 127.0.0.1 at 2011-05-23 10:33:29) [GET]
+  Parameters: {"action"=>"articles", "page"=>1, "controller"=>"blog"}
+  [4;36;1mArticle Load (7.3ms)[0m   [0;1mSELECT * FROM "articles" WHERE (published = 't') ORDER BY created_at DESC LIMIT 5 OFFSET 0[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(*) AS count_all FROM "articles" WHERE (published = 't') [0m
+Rendering template within layouts/application
+Rendering blog/articles
+Rendered blog/_article_spacer (0.1ms)
+  [4;36;1mWriter Load (0.5ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 284 ) [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 284 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 284 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.7ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 284)) [0m
+Rendered blog/_article (37.6ms)
+  [4;36;1mWriter Load (0.6ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 281 ) [0m
+  [4;35;1mCategory Load (0.6ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 281 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 281 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.5ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 281)) [0m
+Rendered blog/_article (9.0ms)
+  [4;36;1mWriter Load (0.5ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 280 ) [0m
+  [4;35;1mCategory Load (0.5ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 280 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 280 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.5ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 280)) [0m
+Rendered blog/_article (8.6ms)
+  [4;36;1mWriter Load (0.6ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 279 ) [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 279 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 279 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.5ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 279)) [0m
+Rendered blog/_article (8.7ms)
+  [4;36;1mWriter Load (0.5ms)[0m   [0;1mSELECT * FROM "writers" INNER JOIN "articles_writers" ON "writers".id = "articles_writers".writer_id WHERE ("articles_writers".article_id = 277 ) [0m
+  [4;35;1mCategory Load (0.4ms)[0m   [0mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 277 ) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "categories" INNER JOIN "articles_categories" ON "categories".id = "articles_categories".category_id WHERE ("articles_categories".article_id = 277 ) LIMIT 1[0m
+  [4;35;1mTag Load (0.4ms)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".article_id = 277)) [0m
+Rendered blog/_article (9.1ms)
+Rendered layouts/_header (2.7ms)
+  [4;36;1mBanner Load (0.2ms)[0m   [0;1mSELECT * FROM "banners" WHERE ("banners"."published" = 't') LIMIT 1[0m
+Rendered layouts/_sidebar_banner (5.2ms)
+Cached fragment hit: feeds_from_apple (0.2ms)
+Rendered layouts/_sidebar (7.4ms)
+Rendered layouts/_infobox (4.5ms)
+Rendered layouts/_footer (1.0ms)
+Rendered layouts/_google_analytics (0.1ms)
+Completed in 204ms (View: 91, DB: 16) | 200 OK [http://jabolko-blog.dev/]
